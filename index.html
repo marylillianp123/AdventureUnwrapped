@@ -593,9 +593,13 @@ footer{background:var(--moss-deep);color:rgba(251,246,234,0.82);padding:56px 0 3
 
       <div class="confirm" id="confirmPanel">
         <div class="stamp-big">✉️</div>
-        <h3>Request received</h3>
-        <p>Thank you — I'll read through your notes and reply personally, usually within a couple of days. In the meantime, feel free to send the email below so it's in writing too.</p>
         <a href="#" id="mailtoBtn" class="btn btn-gold">Email me this request</a>
+      </div>
+
+      <div class="confirm" id="thankYouPanel" style="display:none;">
+        <div class="stamp-big">✉️</div>
+        <h3>Thank you for your request</h3>
+        <p>I'll read through your notes and reply to you personally within a couple of days.</p>
       </div>
     </div>
   </div>
@@ -751,6 +755,13 @@ document.querySelectorAll('.slideshow').forEach(function(container){
     document.querySelector('.form-card form').style.display = 'none';
     document.querySelector('.progress-rail').style.display = 'none';
     document.getElementById('confirmPanel').classList.add('active');
+  });
+
+  document.getElementById('mailtoBtn').addEventListener('click', function(){
+    document.getElementById('confirmPanel').classList.remove('active');
+    document.getElementById('confirmPanel').style.display = 'none';
+    document.getElementById('thankYouPanel').classList.add('active');
+    document.getElementById('thankYouPanel').style.display = 'block';
   });
 
   render();
